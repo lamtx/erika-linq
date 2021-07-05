@@ -1,0 +1,2 @@
+rootProject.name = "erika-linq"
+include ':linq'
