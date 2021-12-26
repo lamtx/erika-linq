@@ -41,7 +41,7 @@ class SqlContext(private val sqlHelper: SqlHelper) : Context {
         return fetch(this, sqlHelper.readableDatabase)
     }
 
-    fun <T : Any, R> Collectible<T>.collect(creator: (Collector<T>) -> R): List<R> {
+    fun <T : Any, R> Collectible<T>.collect(creator: (Collector<T>) -> R): MutableList<R> {
         val cursor = fetch(this, sqlHelper.readableDatabase)
         return toList(cursor, source, creator)
     }
@@ -68,7 +68,7 @@ class SqlContext(private val sqlHelper: SqlHelper) : Context {
 
     companion object {
         const val tag = "SqlContext"
-        fun <T, R> toList(cursor: Cursor, source: T, creator: (Collector<T>) -> R): List<R> {
+        fun <T, R> toList(cursor: Cursor, source: T, creator: (Collector<T>) -> R): MutableList<R> {
             cursor.use {
                 val result = mutableListOf<R>()
                 if (cursor.moveToFirst()) {
