@@ -13,12 +13,16 @@ interface SqlHelper {
         return delete(writableDatabase)
     }
 
-    fun <T : Table> Filterable<T>.update(setters: (T) -> Array<Setter<*>>) {
-        return update(writableDatabase, setters)
+    fun <T : Table> Filterable<T>.update(settersBuilder: SetterScope.(T) -> Unit) {
+        return update(writableDatabase) { source ->
+            SetterScopeImpl(source).buildWith(settersBuilder)
+        }
     }
 
-    fun <T : Table> T.insert(setters: (T) -> Array<Setter<*>>): Long {
-        return insert(writableDatabase, setters)
+    fun <T : Table> T.insert(settersBuilder: SetterScope.(T) -> Unit): Long {
+        return insert(writableDatabase) { source ->
+            SetterScopeImpl(source).buildWith(settersBuilder)
+        }
     }
 
     fun <T : Table> from(table: T) = Context.empty.from(table)
@@ -31,6 +35,25 @@ fun SqlHelper(database: SQLiteOpenHelper): SqlHelper {
             get() = database.readableDatabase
         override val writableDatabase: SQLiteDatabase
             get() = database.writableDatabase
+    }
+}
+
+private class SetterScopeImpl<TSource : Table>(
+    val source: TSource,
+) : SetterScope {
+    val setters = mutableListOf<Setter<*>>()
+
+    override fun <T> Column<T>.set(value: T) {
+        setters.add(Setter(this, value))
+    }
+
+    override fun <T> Column<T>.set(value: Expression<T>) {
+        setters.add(Setter(this, value))
+    }
+
+    fun buildWith(builder: SetterScope.(TSource) -> Unit): List<Setter<*>> {
+        builder(source)
+        return setters
     }
 }
 

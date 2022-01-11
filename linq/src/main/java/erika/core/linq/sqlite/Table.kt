@@ -136,7 +136,7 @@ open class Table(internal val tableName: String) : Selectable {
     }
 }
 
-fun <T : Table> T.insert(database: SQLiteDatabase, setters: (T) -> Array<Setter<*>>): Long {
+fun <T : Table> T.insert(database: SQLiteDatabase, setters: (T) -> List<Setter<*>>): Long {
     val values = ContentValues()
     val columns = setters(this)
     val nonnullColumns = allNonnullColumns()

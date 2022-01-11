@@ -117,7 +117,7 @@ fun <T : Selectable> Filterable<T>.delete(database: SQLiteDatabase): Int {
     return database.delete(source.clause(context), buildWhereClause(context), stringArgs)
 }
 
-fun <T : Table> Filterable<T>.update(database: SQLiteDatabase, setters: (T) -> Array<Setter<*>>) {
+fun <T : Table> Filterable<T>.update(database: SQLiteDatabase, setters: (T) -> List<Setter<*>>) {
     val args = args()
     val context = Context.empty
     val contentValues = ContentValues()
