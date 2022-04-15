@@ -13,20 +13,6 @@ fun <T> Setter(column: Column<T>, value: T): Setter<T> {
     return Setter(column, LiteralExpression(value))
 }
 
-@Deprecated(
-    message = "Use `set` instead.",
-    replaceWith = ReplaceWith("set(value)")
-)
-@Suppress("NOTHING_TO_INLINE")
-inline infix fun <T> Column<T>.x(value: T): Setter<T> = set(value)
-
 infix fun <T> Column<T>.set(value: T): Setter<T> = Setter(this, value)
-
-@Deprecated(
-    message = "Use `set` instead.",
-    replaceWith = ReplaceWith("set(expression)")
-)
-@Suppress("NOTHING_TO_INLINE")
-infix fun <T> Column<T>.x(expression: Expression<T>): Setter<T> = set(expression)
 
 infix fun <T> Column<T>.set(expression: Expression<T>): Setter<T> = Setter(this, expression)
