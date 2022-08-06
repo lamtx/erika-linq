@@ -21,7 +21,7 @@ internal enum class BinaryOperator(val op: String) {
     LESS_THAN("<"),
     LESS_THAN_OR_EQUALS("<="),
     EQUALS("="),
-    GREATER_OR_EQUALS(">="),
+    GREATER_THAN_OR_EQUALS(">="),
     GREATER_THAN(">"),
     NOT_EQUALS("<>"),
     AND("AND"),

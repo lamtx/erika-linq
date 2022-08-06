@@ -29,7 +29,7 @@ class ExampleUnitTest {
         fun update(id: Long, name: String? = null, age: Int? = null) {
             newContext {
                 from(Customers)
-                    .where { it.id eq id }
+                    .where { it.id eq 1 }
                     .update {
                         if (name != null) {
                             it.name set name
