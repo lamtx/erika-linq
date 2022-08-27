@@ -119,78 +119,78 @@ infix fun <T : Enum<T>> Expression<T?>.ne(value: T?) =
 
 // Less than
 @JvmName("ltInt")
-infix fun Expression<Int>.lt(other: Expression<Int>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Int?>.lt(other: Expression<Int>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltLong")
-infix fun Expression<Long>.lt(other: Expression<Long>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Long?>.lt(other: Expression<Long?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltString")
-infix fun Expression<String>.lt(other: Expression<String>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<String?>.lt(other: Expression<String>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltDouble")
-infix fun Expression<Double>.lt(other: Expression<Double>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Double?>.lt(other: Expression<Double?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltFloat")
-infix fun Expression<Float>.lt(other: Expression<Float>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Float?>.lt(other: Expression<Float?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltDate")
-infix fun Expression<Date>.lt(other: Expression<Date>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Date?>.lt(other: Expression<Date?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltBoolean")
-infix fun Expression<Boolean>.lt(other: Expression<Boolean>) =
+infix fun Expression<Boolean?>.lt(other: Expression<Boolean?>) =
     binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltEnum")
-infix fun <T : Enum<T>> Expression<T>.lt(other: Expression<T>) =
+infix fun <T : Enum<T>> Expression<T?>.lt(other: Expression<T?>) =
     binary(BinaryOperator.LESS_THAN, other)
 
-infix fun Expression<Int>.lt(value: Int) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Int?>.lt(value: Int) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<Long>.lt(value: Long) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Long?>.lt(value: Long) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<Double>.lt(value: Double) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Double?>.lt(value: Double) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<Float>.lt(value: Float) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Float?>.lt(value: Float) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<Boolean>.lt(value: Boolean) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Boolean?>.lt(value: Boolean) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<String>.lt(value: String) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<String?>.lt(value: String) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun Expression<Date>.lt(value: Date) = binary(BinaryOperator.LESS_THAN, value)
+infix fun Expression<Date?>.lt(value: Date) = binary(BinaryOperator.LESS_THAN, value)
 
-infix fun <T : Enum<T>> Expression<T>.lt(value: T) = binary(BinaryOperator.LESS_THAN, value)
+infix fun <T : Enum<T>> Expression<T?>.lt(value: T) = binary(BinaryOperator.LESS_THAN, value)
 
 // Less than or equal
 @JvmName("leInt")
-infix fun Expression<Int>.le(other: Expression<Int>) =
+infix fun Expression<Int?>.le(other: Expression<Int?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leLong")
-infix fun Expression<Long>.le(other: Expression<Long>) =
+infix fun Expression<Long?>.le(other: Expression<Long?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leString")
-infix fun Expression<String>.le(other: Expression<String>) =
+infix fun Expression<String?>.le(other: Expression<String?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leDouble")
-infix fun Expression<Double>.le(other: Expression<Double>) =
+infix fun Expression<Double?>.le(other: Expression<Double?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leFloat")
-infix fun Expression<Float>.le(other: Expression<Float>) =
+infix fun Expression<Float?>.le(other: Expression<Float?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leDate")
-infix fun Expression<Date>.le(other: Expression<Date>) =
+infix fun Expression<Date?>.le(other: Expression<Date?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leBoolean")
-infix fun Expression<Boolean>.le(other: Expression<Boolean>) =
+infix fun Expression<Boolean?>.le(other: Expression<Boolean?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 @JvmName("leEnum")
-infix fun <T : Enum<T>> Expression<T>.le(other: Expression<T>) =
+infix fun <T : Enum<T>> Expression<T?>.le(other: Expression<T?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
 infix fun Expression<Int>.le(value: Int) = binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
@@ -207,106 +207,106 @@ infix fun Expression<String>.le(value: String) = binary(BinaryOperator.LESS_THAN
 
 infix fun Expression<Date>.le(value: Date) = binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
 
-infix fun <T : Enum<T>> Expression<T>.le(value: T) =
+infix fun <T : Enum<T>> Expression<T?>.le(value: T) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
 
 // Greater than
 @JvmName("gtInt")
-infix fun Expression<Int>.gt(other: Expression<Int>) = binary(BinaryOperator.GREATER_THAN, other)
+infix fun Expression<Int?>.gt(other: Expression<Int?>) = binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtLong")
-infix fun Expression<Long>.gt(other: Expression<Long>) = binary(BinaryOperator.GREATER_THAN, other)
+infix fun Expression<Long?>.gt(other: Expression<Long?>) = binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtString")
-infix fun Expression<String>.gt(other: Expression<String>) =
+infix fun Expression<String?>.gt(other: Expression<String?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtDouble")
-infix fun Expression<Double>.gt(other: Expression<Double>) =
+infix fun Expression<Double?>.gt(other: Expression<Double?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtFloat")
-infix fun Expression<Float>.gt(other: Expression<Float>) =
+infix fun Expression<Float?>.gt(other: Expression<Float?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtDate")
-infix fun Expression<Date>.gt(other: Expression<Date>) = binary(BinaryOperator.GREATER_THAN, other)
+infix fun Expression<Date?>.gt(other: Expression<Date?>) = binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtBoolean")
-infix fun Expression<Boolean>.gt(other: Expression<Boolean>) =
+infix fun Expression<Boolean?>.gt(other: Expression<Boolean?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtEnum")
-infix fun <T : Enum<T>> Expression<T>.gt(other: Expression<T>) =
+infix fun <T : Enum<T>> Expression<T?>.gt(other: Expression<T?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
-infix fun Expression<Int>.gt(value: Int) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Int?>.gt(value: Int) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<Long>.gt(value: Long) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Long?>.gt(value: Long) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<Double>.gt(value: Double) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Double?>.gt(value: Double) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<Float>.gt(value: Float) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Float?>.gt(value: Float) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<Boolean>.gt(value: Boolean) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Boolean?>.gt(value: Boolean) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<String>.gt(value: String) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<String?>.gt(value: String) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun Expression<Date>.gt(value: Date) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun Expression<Date?>.gt(value: Date) = binary(BinaryOperator.GREATER_THAN, value)
 
-infix fun <T : Enum<T>> Expression<T>.gt(value: T) = binary(BinaryOperator.GREATER_THAN, value)
+infix fun <T : Enum<T>> Expression<T?>.gt(value: T) = binary(BinaryOperator.GREATER_THAN, value)
 
 // Greater than or equals
 @JvmName("geInt")
-infix fun Expression<Int>.ge(other: Expression<Int>) =
+infix fun Expression<Int?>.ge(other: Expression<Int>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geLong")
-infix fun Expression<Long>.ge(other: Expression<Long>) =
+infix fun Expression<Long?>.ge(other: Expression<Long>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geString")
-infix fun Expression<String>.ge(other: Expression<String>) =
+infix fun Expression<String?>.ge(other: Expression<String>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geDouble")
-infix fun Expression<Double>.ge(other: Expression<Double>) =
+infix fun Expression<Double?>.ge(other: Expression<Double>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geFloat")
-infix fun Expression<Float>.ge(other: Expression<Float>) =
+infix fun Expression<Float?>.ge(other: Expression<Float>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geDate")
-infix fun Expression<Date>.ge(other: Expression<Date>) =
+infix fun Expression<Date?>.ge(other: Expression<Date>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geBoolean")
-infix fun Expression<Boolean>.ge(other: Expression<Boolean>) =
+infix fun Expression<Boolean?>.ge(other: Expression<Boolean>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
 @JvmName("geEnum")
-infix fun <T : Enum<T>> Expression<T>.ge(other: Expression<T>) =
+infix fun <T : Enum<T>> Expression<T?>.ge(other: Expression<T>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
-infix fun Expression<Int>.ge(value: Int) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
+infix fun Expression<Int?>.ge(value: Int) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<Long>.ge(value: Long) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
+infix fun Expression<Long?>.ge(value: Long) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<Double>.ge(value: Double) =
+infix fun Expression<Double?>.ge(value: Double) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<Float>.ge(value: Float) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
+infix fun Expression<Float?>.ge(value: Float) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<Boolean>.ge(value: Boolean) =
+infix fun Expression<Boolean?>.ge(value: Boolean) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<String>.ge(value: String) =
+infix fun Expression<String?>.ge(value: String) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun Expression<Date>.ge(value: Date) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
+infix fun Expression<Date?>.ge(value: Date) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
-infix fun <T : Enum<T>> Expression<T>.ge(value: T) =
+infix fun <T : Enum<T>> Expression<T?>.ge(value: T) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
 // end of comparison
