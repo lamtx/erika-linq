@@ -26,6 +26,16 @@ class ExampleUnitTest {
     }
 
     class CustomerDataContext(dataContext: AppData) : SqlHelper by SqlHelper(dataContext) {
+
+        fun filter(age: Int? = null) {
+            val s: String? = null
+            s.isNullOrEmpty()
+            newContext {
+                from(Customers)
+                    .where { if (age == null) True else it.age lt age }
+            }
+        }
+
         fun update(id: Long, name: String? = null, age: Int? = null) {
             newContext {
                 from(Customers)

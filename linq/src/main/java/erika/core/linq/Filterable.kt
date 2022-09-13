@@ -1,18 +1,33 @@
 package erika.core.linq
 
 interface Filterable<T : Expressible> : Queryable<T> {
-    fun where(expression: (T) -> Expression<Boolean>): Filterable<T>
+    fun where(expression: WhereScope.(T) -> Expression<Boolean>): Filterable<T>
+}
+
+interface WhereScope {
+
+    val True: Expression<Boolean>
+
+    val False: Expression<Boolean>
+
+    companion object : WhereScope {
+        override val True: Expression<Boolean>
+            get() = LiteralExpression(true)
+
+        override val False: Expression<Boolean>
+            get() = LiteralExpression(false)
+    }
 }
 
 @Suppress("FUNCTIONNAME")
 internal fun <T : Expressible> Filterable(
-        source: T,
-        whereClauses: List<Expression<Boolean>> = emptyList()
+    source: T,
+    whereClauses: List<Expression<Boolean>> = emptyList(),
 ): Filterable<T> = object : Filterable<T> {
     override val source: T = source
 
-    override fun where(expression: (T) -> Expression<Boolean>): Filterable<T> {
-        var predicate = expression(source)
+    override fun where(expression: WhereScope.(T) -> Expression<Boolean>): Filterable<T> {
+        var predicate = WhereScope.expression(source)
         if (predicate is NamedExpression<Boolean>) {
             predicate = predicate eq true
         } else if (predicate is LiteralExpression<Boolean> && predicate.boolValue) {
