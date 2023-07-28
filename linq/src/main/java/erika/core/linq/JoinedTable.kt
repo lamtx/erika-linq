@@ -1,10 +1,10 @@
 package erika.core.linq
 
 class JoinedTable<Left : Selectable, Right : Selectable> internal constructor(
-        val left: Left,
-        val right: Right,
-        private val joinType: JoinType,
-        private val on: Expressible
+    val left: Left,
+    val right: Right,
+    private val joinType: JoinType,
+    private val on: Expressible
 ) : Selectable {
     operator fun component1(): Left = left
 
@@ -20,7 +20,8 @@ class JoinedTable<Left : Selectable, Right : Selectable> internal constructor(
         return leftExpressible.plus(elements = rightExpressible)
     }
 
-    override fun clause(context: Context) = "${left.clause(context)} ${joinType.op} ${right.clause(context)} ON ${on.clause(context)}"
+    override fun clause(context: Context) =
+        "${left.clause(context)} ${joinType.op} ${right.clause(context)} ON ${on.clause(context)}"
 
     override fun args(): Array<Any?> = emptyArray()
 }

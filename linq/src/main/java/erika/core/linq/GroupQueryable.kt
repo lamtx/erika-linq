@@ -1,13 +1,13 @@
 package erika.core.linq
 
 class Group<TSource : Expressible, Key>(
-        val source: TSource,
-        val key: Key
+    val source: TSource,
+    val key: Key
 ) : Expressible by source
 
 class GroupQueryable<T : Expressible, Key : Any>(
-        private val base: Queryable<T>,
-        key: Key
+    private val base: Queryable<T>,
+    key: Key
 ) : Queryable<Group<T, Key>> {
     private val groupByClauses = collectExpressible(key)
 

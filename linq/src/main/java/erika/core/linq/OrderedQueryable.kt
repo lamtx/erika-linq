@@ -1,8 +1,8 @@
 package erika.core.linq
 
 class OrderedQueryable<T : Expressible> internal constructor(
-        private val base: Queryable<T>,
-        private val orderBy: Array<out Expressible>
+    private val base: Queryable<T>,
+    private val orderBy: Array<out Expressible>
 ) : Queryable<T> by base {
 
     override fun clause(context: Context): String {

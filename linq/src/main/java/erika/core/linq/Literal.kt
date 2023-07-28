@@ -3,6 +3,7 @@ package erika.core.linq
 import android.content.ContentValues
 import android.database.Cursor
 import erika.core.linq.sqlite.Column
+import kotlinx.datetime.Instant
 import java.util.*
 
 internal typealias ObjectFactory<T> = (cursor: Cursor, columnIndex: Int) -> T
@@ -80,6 +81,14 @@ private val dateFactory: ObjectFactory<Date?> = { cursor, columnIndex ->
     }
 }
 
+private val instantFactory: ObjectFactory<Instant?> = { cursor, columnIndex ->
+    if (cursor.isNull(columnIndex)) {
+        null
+    } else {
+        Instant.fromEpochMilliseconds(cursor.getLong(columnIndex))
+    }
+}
+
 private val blobFactory: ObjectFactory<ByteArray?> = { cursor, columnIndex ->
     cursor.getBlob(columnIndex)
 }
@@ -90,6 +99,7 @@ internal fun <T> getObjectFactory(type: Class<T>): ObjectFactory<T> {
         String::class.java -> stringFactory as ObjectFactory<T>
         Int::class.java, java.lang.Integer::class.java -> intFactory as ObjectFactory<T>
         Date::class.java -> dateFactory as ObjectFactory<T>
+        Instant::class.java -> instantFactory as ObjectFactory<T>
         Boolean::class.java, java.lang.Boolean::class.java -> boolFactory as ObjectFactory<T>
         Double::class.java, java.lang.Double::class.java -> doubleFactory as ObjectFactory<T>
         Float::class.java, java.lang.Float::class.java -> floatFactory as ObjectFactory<T>
@@ -108,12 +118,17 @@ internal fun toSQLiteLiteral(value: Any?): Any? {
         is Boolean -> if (value) 1 else 0
         is Enum<*> -> value.ordinal
         is Date -> value.time
+        is Instant -> value.toEpochMilliseconds()
         null, is Number, is String, is ByteArray -> value
         else -> throw UnsupportedOperationException("Unsupported type ${value.javaClass} for SQL")
     }
 }
 
-internal fun putToContentValues(values: ContentValues, column: Column<*>, literal: LiteralExpression<*>) {
+internal fun putToContentValues(
+    values: ContentValues,
+    column: Column<*>,
+    literal: LiteralExpression<*>
+) {
     val name = column.name
     when (val value = literal.value) {
         null -> values.put(name, null as String?)
@@ -126,6 +141,8 @@ internal fun putToContentValues(values: ContentValues, column: Column<*>, litera
         is Short -> values.put(name, value)
         is Boolean -> values.put(name, value)
         is ByteArray -> values.put(name, value)
-        else -> throw error("Unknown type ${value.javaClass} for SQL")
+        is Date -> values.put(name, value.time)
+        is Instant -> values.put(name, value.toEpochMilliseconds())
+        else -> error("Unknown type ${value.javaClass} for SQL")
     }
 }

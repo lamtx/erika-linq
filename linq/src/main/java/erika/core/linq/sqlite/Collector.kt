@@ -6,8 +6,8 @@ import erika.core.linq.ObjectFactory
 import erika.core.linq.getObjectFactory
 
 class Collector<out T>(
-        private val source: T,
-        private val cursor: Cursor
+    private val source: T,
+    private val cursor: Cursor
 ) {
     private val cache = mutableListOf<Column<*>>()
     private var index = 0
@@ -24,7 +24,10 @@ class Collector<out T>(
             val column = try {
                 cache[index]
             } catch (e: IndexOutOfBoundsException) {
-                throw RuntimeException("Index out of bound. It usually happens when the number of field reading for each time are different", e)
+                throw RuntimeException(
+                    "Index out of bound. It usually happens when the number of field reading for each time are different",
+                    e
+                )
             }
             index += 1
             if (column.name != field) {

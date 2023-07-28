@@ -1,5 +1,6 @@
 package erika.core.linq
 
+import kotlinx.datetime.Instant
 import java.util.*
 
 interface Expression<out T> : Expressible
@@ -22,6 +23,9 @@ infix fun Expression<Float?>.eq(other: Expression<Float?>) = binary(BinaryOperat
 
 @JvmName("eqDate")
 infix fun Expression<Date?>.eq(other: Expression<Date?>) = binary(BinaryOperator.EQUALS, other)
+
+@JvmName("eqInstant")
+infix fun Expression<Instant?>.eq(other: Expression<Instant?>) = binary(BinaryOperator.EQUALS, other)
 
 @JvmName("eqBoolean")
 infix fun Expression<Boolean?>.eq(other: Expression<Boolean?>) =
@@ -52,8 +56,12 @@ infix fun Expression<String?>.eq(value: String?) =
 infix fun Expression<Date?>.eq(value: Date?) =
     if (value == null) binary(BinaryOperator.IS, null) else binary(BinaryOperator.EQUALS, value)
 
+infix fun Expression<Instant?>.eq(value: Instant?) =
+    if (value == null) binary(BinaryOperator.IS, null) else binary(BinaryOperator.EQUALS, value)
+
 infix fun <T : Enum<T>> Expression<T?>.eq(value: T?) =
     if (value == null) binary(BinaryOperator.IS, null) else binary(BinaryOperator.EQUALS, value)
+
 
 // Not Equal
 @JvmName("neInt")
@@ -77,6 +85,9 @@ infix fun Expression<Float?>.ne(other: Expression<Float?>) =
 @JvmName("neDate")
 infix fun Expression<Date?>.ne(other: Expression<Date?>) = binary(BinaryOperator.NOT_EQUALS, other)
 
+@JvmName("neInstant")
+infix fun Expression<Instant?>.ne(other: Expression<Instant?>) = binary(BinaryOperator.NOT_EQUALS, other)
+
 @JvmName("neBoolean")
 infix fun Expression<Boolean?>.ne(other: Expression<Boolean?>) =
     binary(BinaryOperator.NOT_EQUALS, other)
@@ -86,36 +97,58 @@ infix fun <T : Enum<T>> Expression<T?>.ne(other: Expression<T?>) =
     binary(BinaryOperator.NOT_EQUALS, other)
 
 infix fun Expression<Int?>.ne(value: Int?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<Long?>.ne(value: Long?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<Double?>.ne(value: Double?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<Float?>.ne(value: Float?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<Boolean?>.ne(value: Boolean?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<String?>.ne(value: String?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun Expression<Date?>.ne(value: Date?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
+
+infix fun Expression<Instant?>.ne(value: Instant?) =
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 infix fun <T : Enum<T>> Expression<T?>.ne(value: T?) =
-    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(BinaryOperator.NOT_EQUALS,
-        value)
+    if (value == null) binary(BinaryOperator.IS_NOT, null) else binary(
+        BinaryOperator.NOT_EQUALS,
+        value
+    )
 
 // Less than
 @JvmName("ltInt")
@@ -125,16 +158,21 @@ infix fun Expression<Int?>.lt(other: Expression<Int>) = binary(BinaryOperator.LE
 infix fun Expression<Long?>.lt(other: Expression<Long?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltString")
-infix fun Expression<String?>.lt(other: Expression<String>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<String?>.lt(other: Expression<String>) =
+    binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltDouble")
-infix fun Expression<Double?>.lt(other: Expression<Double?>) = binary(BinaryOperator.LESS_THAN, other)
+infix fun Expression<Double?>.lt(other: Expression<Double?>) =
+    binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltFloat")
 infix fun Expression<Float?>.lt(other: Expression<Float?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltDate")
 infix fun Expression<Date?>.lt(other: Expression<Date?>) = binary(BinaryOperator.LESS_THAN, other)
+
+@JvmName("ltInstant")
+infix fun Expression<Instant?>.lt(other: Expression<Instant?>) = binary(BinaryOperator.LESS_THAN, other)
 
 @JvmName("ltBoolean")
 infix fun Expression<Boolean?>.lt(other: Expression<Boolean?>) =
@@ -157,6 +195,8 @@ infix fun Expression<Boolean?>.lt(value: Boolean) = binary(BinaryOperator.LESS_T
 infix fun Expression<String?>.lt(value: String) = binary(BinaryOperator.LESS_THAN, value)
 
 infix fun Expression<Date?>.lt(value: Date) = binary(BinaryOperator.LESS_THAN, value)
+
+infix fun Expression<Instant?>.lt(value: Instant) = binary(BinaryOperator.LESS_THAN, value)
 
 infix fun <T : Enum<T>> Expression<T?>.lt(value: T) = binary(BinaryOperator.LESS_THAN, value)
 
@@ -185,6 +225,10 @@ infix fun Expression<Float?>.le(other: Expression<Float?>) =
 infix fun Expression<Date?>.le(other: Expression<Date?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
 
+@JvmName("leInstant")
+infix fun Expression<Instant?>.le(other: Expression<Instant?>) =
+    binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
+
 @JvmName("leBoolean")
 infix fun Expression<Boolean?>.le(other: Expression<Boolean?>) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, other)
@@ -207,6 +251,8 @@ infix fun Expression<String>.le(value: String) = binary(BinaryOperator.LESS_THAN
 
 infix fun Expression<Date>.le(value: Date) = binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
 
+infix fun Expression<Instant>.le(value: Instant) = binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
+
 infix fun <T : Enum<T>> Expression<T?>.le(value: T) =
     binary(BinaryOperator.LESS_THAN_OR_EQUALS, value)
 
@@ -215,7 +261,8 @@ infix fun <T : Enum<T>> Expression<T?>.le(value: T) =
 infix fun Expression<Int?>.gt(other: Expression<Int?>) = binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtLong")
-infix fun Expression<Long?>.gt(other: Expression<Long?>) = binary(BinaryOperator.GREATER_THAN, other)
+infix fun Expression<Long?>.gt(other: Expression<Long?>) =
+    binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtString")
 infix fun Expression<String?>.gt(other: Expression<String?>) =
@@ -230,7 +277,12 @@ infix fun Expression<Float?>.gt(other: Expression<Float?>) =
     binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtDate")
-infix fun Expression<Date?>.gt(other: Expression<Date?>) = binary(BinaryOperator.GREATER_THAN, other)
+infix fun Expression<Date?>.gt(other: Expression<Date?>) =
+    binary(BinaryOperator.GREATER_THAN, other)
+
+@JvmName("gtInstant")
+infix fun Expression<Instant?>.gt(other: Expression<Instant?>) =
+    binary(BinaryOperator.GREATER_THAN, other)
 
 @JvmName("gtBoolean")
 infix fun Expression<Boolean?>.gt(other: Expression<Boolean?>) =
@@ -253,6 +305,8 @@ infix fun Expression<Boolean?>.gt(value: Boolean) = binary(BinaryOperator.GREATE
 infix fun Expression<String?>.gt(value: String) = binary(BinaryOperator.GREATER_THAN, value)
 
 infix fun Expression<Date?>.gt(value: Date) = binary(BinaryOperator.GREATER_THAN, value)
+
+infix fun Expression<Instant?>.gt(value: Instant) = binary(BinaryOperator.GREATER_THAN, value)
 
 infix fun <T : Enum<T>> Expression<T?>.gt(value: T) = binary(BinaryOperator.GREATER_THAN, value)
 
@@ -281,6 +335,10 @@ infix fun Expression<Float?>.ge(other: Expression<Float>) =
 infix fun Expression<Date?>.ge(other: Expression<Date>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
 
+@JvmName("geInstant")
+infix fun Expression<Instant?>.ge(other: Expression<Instant>) =
+    binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
+
 @JvmName("geBoolean")
 infix fun Expression<Boolean?>.ge(other: Expression<Boolean>) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, other)
@@ -305,6 +363,8 @@ infix fun Expression<String?>.ge(value: String) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
 infix fun Expression<Date?>.ge(value: Date) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
+
+infix fun Expression<Instant?>.ge(value: Instant) = binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)
 
 infix fun <T : Enum<T>> Expression<T?>.ge(value: T) =
     binary(BinaryOperator.GREATER_THAN_OR_EQUALS, value)

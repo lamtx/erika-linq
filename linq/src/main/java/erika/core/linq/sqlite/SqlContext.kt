@@ -5,7 +5,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import erika.core.linq.*
-import java.util.*
 
 class SqlContext(private val sqlHelper: SqlHelper) : Context {
     private val mapping = mutableListOf<Selectable>()
@@ -129,7 +128,10 @@ fun <T : Table> Filterable<T>.update(database: SQLiteDatabase, setters: (T) -> L
         }
 
         val whereClause = buildWhereClause(context)
-        Log.d(SqlContext.tag, "Update: $contentValues FROM ${source.clause(context)} WHERE $whereClause")
+        Log.d(
+            SqlContext.tag,
+            "Update: $contentValues FROM ${source.clause(context)} WHERE $whereClause"
+        )
         Log.d(SqlContext.tag, "Args: ${stringArgs.contentToString()}")
         database.update(source.clause(context), contentValues, whereClause, stringArgs)
     } else {

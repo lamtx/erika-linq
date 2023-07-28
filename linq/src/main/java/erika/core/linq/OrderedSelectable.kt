@@ -1,8 +1,9 @@
 package erika.core.linq
 
 class OrderedSelectable(
-        private val source: Selectable,
-        private val orderBy: Array<out Expressible>) : Selectable by source {
+    private val source: Selectable,
+    private val orderBy: Array<out Expressible>
+) : Selectable by source {
 
     override fun clause(context: Context): String {
         val sb = StringBuilder(source.clause(context))

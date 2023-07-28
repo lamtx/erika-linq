@@ -6,10 +6,10 @@ interface Collectible<T : Any> : Selectable {
 
 @Suppress("FUNCTIONNAME")
 internal fun <T : Any> Collectible(
-        source: T,
-        baseSource: Expressible,
-        distinct: Boolean,
-        query: Expressible
+    source: T,
+    baseSource: Expressible,
+    distinct: Boolean,
+    query: Expressible
 ): Collectible<T> = object : Collectible<T> {
     override val source: T = source
 

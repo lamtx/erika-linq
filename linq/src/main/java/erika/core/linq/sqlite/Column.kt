@@ -6,9 +6,9 @@ import erika.core.linq.LiteralExpression
 import erika.core.linq.NamedExpression
 
 class Column<T>(
-        override val name: String,
-        val owner: Table,
-        private val sqlType: SqliteType
+    override val name: String,
+    val owner: Table,
+    private val sqlType: SqliteType
 ) : NamedExpression<T> {
 
     internal var isPrimary = false

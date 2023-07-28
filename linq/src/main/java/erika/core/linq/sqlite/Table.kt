@@ -2,8 +2,14 @@ package erika.core.linq.sqlite
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
-import erika.core.linq.*
-import java.util.*
+import erika.core.linq.Context
+import erika.core.linq.Expressible
+import erika.core.linq.LiteralExpression
+import erika.core.linq.Selectable
+import erika.core.linq.Setter
+import erika.core.linq.putToContentValues
+import kotlinx.datetime.Instant
+import java.util.Date
 
 open class Table(internal val tableName: String) : Selectable {
 
@@ -16,6 +22,8 @@ open class Table(internal val tableName: String) : Selectable {
     protected fun long(name: String): Column<Long?> = register(name, SqliteType.INTEGER)
 
     protected fun date(name: String): Column<Date?> = register(name, SqliteType.INTEGER)
+
+    protected fun instant(name: String): Column<Instant?> = register(name, SqliteType.INTEGER)
 
     protected fun bool(name: String): Column<Boolean?> = register(name, SqliteType.INTEGER)
 
